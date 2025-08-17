@@ -1,12 +1,19 @@
 import { Link } from 'react-router'
 import arrow from '../assets/images/icons/left-arrow.svg'
+import bg from '../assets/images/more/11.png'
 import AddNewCoffeeForm from '../components/addNewCoffeeForm/AddNewCoffeeForm'
 
 export default function AddNewCoffeePage() {
   return (
     <>
-      <div>
-        <div className="container mx-auto my-10">
+      <div
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        <div className="container mx-auto p-10">
           <Link to={'/'}>
             <h1 className="flex mb-5">
               {' '}
@@ -14,7 +21,7 @@ export default function AddNewCoffeePage() {
               Back to home
             </h1>
           </Link>
-          <div className="bg-[#F4F3F0] p-10 ">
+          <div className="bg-[#F4F3F0] p-10 my-10">
             <div className="max-w-lg mx-auto text-center">
               <h1 className="text-3xl">Add New Coffee</h1>
               <p>
