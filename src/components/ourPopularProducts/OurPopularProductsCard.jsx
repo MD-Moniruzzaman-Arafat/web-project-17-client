@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import coffee from '../../assets/images/1.png'
 import editIcon from '../../assets/images/icons/Frame (1).svg'
 import viewIcon from '../../assets/images/icons/Frame.svg'
@@ -14,13 +15,13 @@ export default function OurPopularProductsCard() {
           <p>Price: 890 Taka</p>
         </div>
         <div className="min-w-[185px] flex items-center justify-center flex-row lg:flex-col  gap-2">
-          <a>
+          <Link to={'/coffee-details'}>
             <img
               src={viewIcon}
               alt=""
               className="bg-[#D2B48C] p-1 rounded-xs"
             />
-          </a>
+          </Link>
           <a>
             <img
               src={editIcon}
