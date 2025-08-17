@@ -3,6 +3,7 @@ import Root from '../layouts/Root'
 import AddNewCoffeePage from '../pages/AddNewCoffeePage'
 import CoffeeDetailsPage from '../pages/CoffeeDetailsPage'
 import HomePage from '../pages/HomePage'
+import NotFoundPage from '../pages/NotFoundPage'
 import UpdateExistingCoffeeDetailsPage from '../pages/UpdateExistingCoffeeDetailsPage'
 
 const router = createBrowserRouter([
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
+      {
+        path: '*',
+        element: <NotFoundPage />,
+      },
       {
         path: '/',
         element: <HomePage />,
