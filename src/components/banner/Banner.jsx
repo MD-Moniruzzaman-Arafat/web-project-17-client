@@ -4,7 +4,7 @@ export default function Banner() {
   return (
     <>
       <div
-        className="min-h-screen flex items-center justify-end px-5 lg:px-20 "
+        className="min-h-screen flex items-center justify-end px-5 lg:px-20 text-white"
         style={{
           backgroundImage: `url(${banner})`,
           backgroundRepeat: 'no-repeat',

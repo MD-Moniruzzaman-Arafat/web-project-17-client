@@ -5,7 +5,7 @@ export default function TopBanner() {
   return (
     <>
       <div style={{ backgroundImage: `url(${banner})` }}>
-        <h1 className="flex items-center justify-center text-4xl">
+        <h1 className="flex items-center justify-center text-4xl text-white">
           <img className="w-20" src={logo} alt="" /> Espresso Emporium
         </h1>
       </div>
