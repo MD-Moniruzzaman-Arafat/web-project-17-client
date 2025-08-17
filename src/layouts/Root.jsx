@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router'
+import Footer from '../components/footer/Footer'
 import TopBanner from '../components/topBanner/TopBanner'
 
 export default function Root() {
@@ -6,6 +7,7 @@ export default function Root() {
     <>
       <TopBanner />
       <Outlet />
+      <Footer />
     </>
   )
 }
