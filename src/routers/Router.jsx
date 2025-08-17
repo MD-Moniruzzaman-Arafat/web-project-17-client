@@ -3,6 +3,7 @@ import Root from '../layouts/Root'
 import AddNewCoffeePage from '../pages/AddNewCoffeePage'
 import CoffeeDetailsPage from '../pages/CoffeeDetailsPage'
 import HomePage from '../pages/HomePage'
+import UpdateExistingCoffeeDetailsPage from '../pages/UpdateExistingCoffeeDetailsPage'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/coffee-details',
         element: <CoffeeDetailsPage />,
+      },
+      {
+        path: '/update-coffee',
+        element: <UpdateExistingCoffeeDetailsPage />,
       },
     ],
   },

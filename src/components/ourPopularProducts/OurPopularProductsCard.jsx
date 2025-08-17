@@ -22,13 +22,13 @@ export default function OurPopularProductsCard() {
               className="bg-[#D2B48C] p-1 rounded-xs"
             />
           </Link>
-          <a>
+          <Link to={'/update-coffee'}>
             <img
               src={editIcon}
               alt=""
               className="bg-[#3C393B] p-1 rounded-xs"
             />
-          </a>
+          </Link>
           <a>
             <img
               src={deleteIcon}
