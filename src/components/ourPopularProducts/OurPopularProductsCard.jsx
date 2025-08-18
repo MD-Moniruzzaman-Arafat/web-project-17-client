@@ -1,18 +1,17 @@
 import { Link } from 'react-router'
-import coffee from '../../assets/images/1.png'
 import editIcon from '../../assets/images/icons/Frame (1).svg'
 import viewIcon from '../../assets/images/icons/Frame.svg'
 import deleteIcon from '../../assets/images/icons/delete 1.svg'
 
-export default function OurPopularProductsCard() {
+export default function OurPopularProductsCard({ data }) {
   return (
     <>
       <div className="bg-[#f5f4f1d3] max-w-[648px] flex flex-col lg:flex-row items-center justify-between p-5 gap-5 rounded-lg">
-        <img className="min-w-[185px]" src={coffee} alt="" />
+        <img className="min-w-[185px]" src={data?.photo} alt="" />
         <div className="min-w-[185px] text-center">
-          <p>Name: Americano Coffee</p>
-          <p>Chef: Mr. Matin Paul</p>
-          <p>Price: 890 Taka</p>
+          <p>Name: {data?.name}</p>
+          <p>Chef: {data?.chef}</p>
+          <p>Price: {data?.price} Taka</p>
         </div>
         <div className="min-w-[185px] flex items-center justify-center flex-row lg:flex-col  gap-2">
           <Link to={'/coffee-details'}>

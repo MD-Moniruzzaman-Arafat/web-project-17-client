@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router'
+import { allCoffee } from '../api/api'
 import Root from '../layouts/Root'
 import AddNewCoffeePage from '../pages/AddNewCoffeePage'
 import CoffeeDetailsPage from '../pages/CoffeeDetailsPage'
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+        loader: allCoffee,
       },
       {
         path: '/add-new-coffee',
