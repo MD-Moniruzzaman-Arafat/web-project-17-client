@@ -14,7 +14,7 @@ export default function OurPopularProductsCard({ data }) {
           <p>Price: {data?.price} Taka</p>
         </div>
         <div className="min-w-[185px] flex items-center justify-center flex-row lg:flex-col  gap-2">
-          <Link to={'/coffee-details'}>
+          <Link to={`/coffee-details/${data?._id}`}>
             <img
               src={viewIcon}
               alt=""

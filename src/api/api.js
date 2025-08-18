@@ -7,4 +7,13 @@ async function allCoffee() {
   }
 }
 
-export { allCoffee }
+async function coffeeDetails({ params }) {
+  try {
+    const res = await fetch(`http://localhost:5000/coffee/${params.id}`)
+    return res.json()
+  } catch (error) {
+    return error
+  }
+}
+
+export { allCoffee, coffeeDetails }
