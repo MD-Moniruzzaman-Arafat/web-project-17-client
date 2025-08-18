@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { CoffeeContext } from '../../contexts'
 
 export default function AddNewCoffeeForm() {
   const [addCoffeeData, setAddCoffeeData] = useState({
@@ -12,6 +13,8 @@ export default function AddNewCoffeeForm() {
     photo: '',
     price: '',
   })
+
+  const { setCoffees } = useContext(CoffeeContext)
 
   const navigate = useNavigate()
 
@@ -35,6 +38,10 @@ export default function AddNewCoffeeForm() {
       if (result.acknowledged) {
         navigate('/')
       }
+      setCoffees((prev) => [
+        ...prev,
+        { ...addCoffeeData, _id: result.insertedId },
+      ])
       console.log(result)
     } catch (error) {
       console.log(error)
