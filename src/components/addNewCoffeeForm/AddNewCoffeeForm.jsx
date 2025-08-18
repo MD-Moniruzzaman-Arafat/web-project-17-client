@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
 
 export default function AddNewCoffeeForm() {
   const [addCoffeeData, setAddCoffeeData] = useState({
@@ -11,6 +12,8 @@ export default function AddNewCoffeeForm() {
     photo: '',
     price: '',
   })
+
+  const navigate = useNavigate()
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -29,6 +32,9 @@ export default function AddNewCoffeeForm() {
         body: JSON.stringify(addCoffeeData),
       })
       const result = await res.json()
+      if (result.acknowledged) {
+        navigate('/')
+      }
       console.log(result)
     } catch (error) {
       console.log(error)

@@ -1,11 +1,12 @@
-import { Link, useLoaderData } from 'react-router'
+import { useContext } from 'react'
+import { Link } from 'react-router'
 import icon from '../../assets/images/icons/Vector.svg'
 import bg from '../../assets/images/more/1.png'
+import { CoffeeContext } from '../../contexts'
 import OurPopularProductsCard from './OurPopularProductsCard'
 
 export default function OurPopularProducts() {
-  const coffeeData = useLoaderData()
-  console.log(coffeeData)
+  const { coffees } = useContext(CoffeeContext)
   return (
     <>
       <div
@@ -29,7 +30,7 @@ export default function OurPopularProducts() {
             </Link>
           </div>
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {coffeeData.map((data) => (
+            {coffees.map((data) => (
               <OurPopularProductsCard key={data._id} data={data} />
             ))}
           </div>
