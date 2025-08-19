@@ -1,11 +1,59 @@
+import { useContext, useState } from 'react'
+import { useLoaderData, useNavigate } from 'react-router'
+import { CoffeeContext } from '../../contexts'
+
 export default function UpdateCoffeeForm() {
+  const result = useLoaderData()
+  const [addCoffeeData, setAddCoffeeData] = useState(result)
+  const { coffees, setCoffees } = useContext(CoffeeContext)
+  const navigate = useNavigate()
+
+  function handleChange(event) {
+    const { name, value } = event.target
+    setAddCoffeeData({ ...addCoffeeData, [name]: value })
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+
+    try {
+      const res = await fetch(
+        `http://localhost:5000/coffee/${addCoffeeData._id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(addCoffeeData),
+        }
+      )
+      const result = await res.json()
+      console.log(result)
+      if (result.modifiedCount > 0) {
+        // Update UI instantly
+        setCoffees(
+          coffees.map((c) =>
+            c._id === addCoffeeData._id ? { ...c, ...addCoffeeData } : c
+          )
+        )
+        navigate('/')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+    console.log(addCoffeeData)
+  }
   return (
     <>
-      <form className="">
+      <form className="" onSubmit={handleSubmit}>
         <div className="flex flex-col lg:flex-row items-center justify-center gap-5">
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Name</legend>
             <input
+              name="name"
+              onChange={handleChange}
+              value={addCoffeeData.name}
               type="text"
               className="input"
               placeholder="Enter coffee name"
@@ -15,6 +63,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Chef</legend>
             <input
+              name="chef"
+              onChange={handleChange}
+              value={addCoffeeData.chef}
               type="text"
               className="input"
               placeholder="Enter coffee chef"
@@ -26,6 +77,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Supplier</legend>
             <input
+              name="supplier"
+              onChange={handleChange}
+              value={addCoffeeData.supplier}
               type="text"
               className="input"
               placeholder="Enter coffee supplier"
@@ -35,6 +89,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Taste</legend>
             <input
+              name="taste"
+              onChange={handleChange}
+              value={addCoffeeData.taste}
               type="text"
               className="input"
               placeholder="Enter coffee taste"
@@ -46,6 +103,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Category</legend>
             <input
+              name="category"
+              onChange={handleChange}
+              value={addCoffeeData.category}
               type="text"
               className="input"
               placeholder="Enter coffee category"
@@ -55,6 +115,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs">
             <legend className="fieldset-legend">Details</legend>
             <input
+              name="details"
+              onChange={handleChange}
+              value={addCoffeeData.details}
               type="text"
               className="input"
               placeholder="Enter coffee details"
@@ -66,6 +129,9 @@ export default function UpdateCoffeeForm() {
           <fieldset className="fieldset min-w-xs lg:min-w-2xl">
             <legend className="fieldset-legend">Photo</legend>
             <input
+              name="photo"
+              onChange={handleChange}
+              value={addCoffeeData.photo}
               type="text"
               className="input w-full"
               placeholder="Enter photo URL"
@@ -74,8 +140,22 @@ export default function UpdateCoffeeForm() {
           </fieldset>
         </div>
         <div className="flex justify-center">
+          <fieldset className="fieldset min-w-xs lg:min-w-2xl">
+            <legend className="fieldset-legend">Price</legend>
+            <input
+              name="price"
+              onChange={handleChange}
+              value={addCoffeeData.price}
+              type="number"
+              className="input w-full"
+              placeholder="Enter coffee price"
+            />
+            <p className="label"></p>
+          </fieldset>
+        </div>
+        <div className="flex justify-center">
           <button className="btn min-w-xs lg:min-w-2xl bg-[#D2B48C]">
-            Update Coffee Details
+            update Coffee
           </button>
         </div>
       </form>

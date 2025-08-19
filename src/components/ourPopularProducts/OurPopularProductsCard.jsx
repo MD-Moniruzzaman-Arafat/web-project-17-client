@@ -38,7 +38,7 @@ export default function OurPopularProductsCard({ data }) {
               className="bg-[#D2B48C] p-1 rounded-xs"
             />
           </Link>
-          <Link to={'/update-coffee'}>
+          <Link to={`/update-coffee/${data?._id}`}>
             <img
               src={editIcon}
               alt=""

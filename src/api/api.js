@@ -16,4 +16,13 @@ async function coffeeDetails({ params }) {
   }
 }
 
-export { allCoffee, coffeeDetails }
+async function coffeeEdit({ params }) {
+  try {
+    const res = await fetch(`http://localhost:5000/coffee/${params.id}`)
+    return res.json()
+  } catch (error) {
+    return error
+  }
+}
+
+export { allCoffee, coffeeDetails, coffeeEdit }

@@ -38,10 +38,12 @@ export default function AddNewCoffeeForm() {
       if (result.acknowledged) {
         navigate('/')
       }
-      setCoffees((prev) => [
-        ...prev,
-        { ...addCoffeeData, _id: result.insertedId },
-      ])
+      if (result.insertedId) {
+        setCoffees((prev) => [
+          ...prev,
+          { ...addCoffeeData, _id: result.insertedId },
+        ])
+      }
       console.log(result)
     } catch (error) {
       console.log(error)

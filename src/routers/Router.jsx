@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router'
-import { coffeeDetails } from '../api/api'
+import { coffeeDetails, coffeeEdit } from '../api/api'
 import Root from '../layouts/Root'
 import AddNewCoffeePage from '../pages/AddNewCoffeePage'
 import CoffeeDetailsPage from '../pages/CoffeeDetailsPage'
@@ -30,8 +30,9 @@ const router = createBrowserRouter([
         loader: coffeeDetails,
       },
       {
-        path: '/update-coffee',
+        path: '/update-coffee/:id',
         element: <UpdateExistingCoffeeDetailsPage />,
+        loader: coffeeEdit,
       },
     ],
   },
