@@ -27,13 +27,16 @@ export default function AddNewCoffeeForm() {
     event.preventDefault()
 
     try {
-      const res = await fetch('http://localhost:5000/coffee', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(addCoffeeData),
-      })
+      const res = await fetch(
+        'https://web-project-17-server.vercel.app/coffee',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(addCoffeeData),
+        }
+      )
       const result = await res.json()
       if (result.acknowledged) {
         navigate('/')

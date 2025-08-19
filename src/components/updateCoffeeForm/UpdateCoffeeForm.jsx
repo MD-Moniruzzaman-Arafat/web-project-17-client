@@ -18,7 +18,7 @@ export default function UpdateCoffeeForm() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/coffee/${addCoffeeData._id}`,
+        `https://web-project-17-server.vercel.app/coffee/${addCoffeeData._id}`,
         {
           method: 'PUT',
           headers: {

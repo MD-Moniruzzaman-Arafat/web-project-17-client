@@ -10,9 +10,12 @@ export default function OurPopularProductsCard({ data }) {
   async function handleDelete(id) {
     console.log(id)
     try {
-      const res = await fetch(`http://localhost:5000/coffee/${id}`, {
-        method: 'DELETE',
-      })
+      const res = await fetch(
+        `https://web-project-17-server.vercel.app/coffee/${id}`,
+        {
+          method: 'DELETE',
+        }
+      )
       const result = await res.json()
       const filterData = coffees.filter((data) => data._id !== id)
       setCoffees(filterData)
